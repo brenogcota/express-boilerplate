@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from './routes';
+import helmet from 'helmet';
 
 import './database';
 
@@ -13,6 +14,7 @@ class App {
 
     middlewares() {
         this.server.use(express.json());
+        this.server.use(helmet());
     }
 
     routes() {
