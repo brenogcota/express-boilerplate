@@ -2,7 +2,7 @@ import express from 'express';
 import routes from './routes';
 import helmet from 'helmet';
 
-import './database';
+import './database/index';
 
 class App {
     constructor() {

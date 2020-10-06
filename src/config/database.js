@@ -1,11 +1,9 @@
-// yarn add pg pg-hstore || mysql || 'sqlite'
-
 module.exports = {
-    dialect: 'postgres' | 'mysql' | 'sqlite',
+    dialect: 'postgres',
     host: 'localhost',
-    username: '',
-    password: '',
-    database: '',
+    username: 'postgres',
+    password: 'postgres',
+    database: 'vuttur_db',
     define: {
         timestamps: true,
         underscored: true,
