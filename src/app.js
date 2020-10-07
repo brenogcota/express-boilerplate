@@ -1,4 +1,5 @@
 import express from 'express';
+require('dotenv').config();
 import routes from './routes';
 import helmet from 'helmet';
 
@@ -10,6 +11,7 @@ class App {
 
         this.middlewares();
         this.routes();
+        this.static();
     }
 
     middlewares() {
@@ -19,6 +21,10 @@ class App {
 
     routes() {
         this.server.use(routes);
+    }
+
+    static() {
+        this.server.use('/static', express.static(__dirname + '/public'));
     }
 }
 

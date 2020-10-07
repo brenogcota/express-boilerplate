@@ -4,13 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js"
+    "test": "jest",
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports"
   },
   "author": "",
   "license": "ISC",
+  "jest": {
+    "verbose": true,
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    }
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
@@ -22,6 +31,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.3",
-    "sucrase": "^3.13.0"
+    "sucrase": "^3.13.0",
+    "@sucrase/jest-plugin": "^2.0.0",
+    "jest": "^26.5.2",
+    "supertest": "^5.0.0"
   }
 }

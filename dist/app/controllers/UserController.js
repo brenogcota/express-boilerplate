@@ -1,6 +1,6 @@
-import * as Yup from 'yup';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _yup = require('yup'); var Yup = _interopRequireWildcard(_yup);
 
-import User from '../models/User';
+var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
 class UserController {
     async store(req, res) {
@@ -14,13 +14,13 @@ class UserController {
             return res.status(400).json({ error: 'Validation fails'});
         }
 
-        const userExists = await User.findOne({ where: { email: req.body.email }});
+        const userExists = await _User2.default.findOne({ where: { email: req.body.email }});
 
         if (userExists) {
             return res.status(400).json({ error: 'User already exists.'});
         }
 
-        const {id, name, email } = await User.create(req.body);
+        const {id, name, email } = await _User2.default.create(req.body);
 
         return res.status(201).json({
             id,
@@ -48,10 +48,10 @@ class UserController {
 
         const { email, oldPassword } = req.body;
 
-        const user = await User.findByPk(req.userId);
+        const user = await _User2.default.findByPk(req.userId);
 
         if(email !== user.email) {
-            const userExists = await User.findOne({ where: { email }});
+            const userExists = await _User2.default.findOne({ where: { email }});
 
             if (userExists) {
                 return res.status(400).json({ error: 'User already exists.'});
@@ -72,4 +72,4 @@ class UserController {
     }
 }
 
-export default new UserController();
+exports. default = new UserController();

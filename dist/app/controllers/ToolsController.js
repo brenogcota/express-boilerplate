@@ -1,7 +1,7 @@
-import * as Yup from 'yup';
-import { Op } from 'sequelize';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _yup = require('yup'); var Yup = _interopRequireWildcard(_yup);
+var _sequelize = require('sequelize');
 
-import Tools from '../models/tools';
+var _tools = require('../models/tools'); var _tools2 = _interopRequireDefault(_tools);
 
 class ToolsController {
 
@@ -11,10 +11,10 @@ class ToolsController {
             if(req.query.tag) {
                 const tag = req.query.tag;
 
-                const tools = await Tools.findAll({
+                const tools = await _tools2.default.findAll({
                     where: {
                       tags: {
-                          [Op.contains]: [tag]
+                          [_sequelize.Op.contains]: [tag]
                       }
                     }
                 });
@@ -22,7 +22,7 @@ class ToolsController {
                 return res.status(200).json(tools);
 
             } else {
-                const tools = await Tools.findAll();
+                const tools = await _tools2.default.findAll();
     
                 return res.status(200).json(tools);
 
@@ -47,13 +47,13 @@ class ToolsController {
 
         try {
 
-            const ToolsExists = await Tools.findOne({ where: { title: req.body.title }});
+            const ToolsExists = await _tools2.default.findOne({ where: { title: req.body.title }});
     
             if (ToolsExists) {
                 return res.status(400).json({ error: 'Tools already exists.'});
             }
     
-            const {id, description, title, link, tags } = await Tools.create(req.body);
+            const {id, description, title, link, tags } = await _tools2.default.create(req.body);
     
 
             return res.status(201).json({
@@ -73,7 +73,7 @@ class ToolsController {
     async show(req, res) {
         try {
 
-            const tool = await Tools.findByPk(req.params.id);
+            const tool = await _tools2.default.findByPk(req.params.id);
 
             if(!tool) {
                 return res.status(404).json({ message: "Tool not found!"});
@@ -100,7 +100,7 @@ class ToolsController {
 
         try {
 
-            const tool = await Tools.findByPk(req.params.id);
+            const tool = await _tools2.default.findByPk(req.params.id);
 
             if(!tool) {
                 return res.status(404).json({ message: "Tool not found!"});
@@ -126,7 +126,7 @@ class ToolsController {
 
         try {
 
-            const tool = await Tools.findByPk(req.params.id);
+            const tool = await _tools2.default.findByPk(req.params.id);
 
             if(!tool) {
                 return res.status(404).json({ message: "Tool not found!"});
@@ -142,4 +142,4 @@ class ToolsController {
     }
 }
 
-export default new ToolsController();
+exports. default = new ToolsController();
