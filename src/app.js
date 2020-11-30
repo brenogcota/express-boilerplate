@@ -2,6 +2,7 @@ import express from 'express';
 require('dotenv').config();
 import routes from './routes';
 import helmet from 'helmet';
+import path from 'path';
 
 import './database/index';
 
@@ -24,7 +25,7 @@ class App {
     }
 
     static() {
-        this.server.use('/static', express.static(__dirname + '/public'));
+        this.server.use(express.static(path.join(__dirname, 'public')));
     }
 }
 

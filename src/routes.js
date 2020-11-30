@@ -9,7 +9,7 @@ import ToolsController from './app/controllers/ToolsController';
 const routes = new Router();
 
 routes.get('/', (req, res) => {
-   return res.sendFile('views/index.html', {root: __dirname })
+   return res.sendFile('/views/index.html', {root: __dirname })
 });
 
 routes.get('/tools', ToolsController.index);

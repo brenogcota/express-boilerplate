@@ -2,6 +2,7 @@
 require('dotenv').config();
 var _routes = require('./routes'); var _routes2 = _interopRequireDefault(_routes);
 var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
+var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 
 require('./database/index');
 
@@ -24,7 +25,7 @@ class App {
     }
 
     static() {
-        this.server.use('/static', _express2.default.static(__dirname + '/public'));
+        this.server.use(_express2.default.static(_path2.default.join(__dirname, 'public')));
     }
 }
 

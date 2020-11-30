@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Express Boilerplate</title>
-</head>
-<style>
 body {
   margin: 0;
   padding: 0;
@@ -42,18 +34,3 @@ a:hover {
   display: flex;
   justify-content: center;
 }
-
-</style>
-<body>
-  <div class="container">
-    <div>
-      <h1>Express Boilerplate</h1>
-      <div class="links">
-        <a href="https://github.com/brenogcota/express-boilerplate" target="_blank">GitHub</a>
-      </div>
-    </div>
-
-  </div>
-  
-</body>
-</html>

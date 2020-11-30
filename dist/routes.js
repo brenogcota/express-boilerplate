@@ -9,7 +9,7 @@ var _ToolsController = require('./app/controllers/ToolsController'); var _ToolsC
 const routes = new (0, _express.Router)();
 
 routes.get('/', (req, res) => {
-   return res.sendFile('views/index.html', {root: __dirname })
+   return res.sendFile('/views/index.html', {root: __dirname })
 });
 
 routes.get('/tools', _ToolsController2.default.index);
